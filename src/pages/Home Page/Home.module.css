@@ -1,0 +1,12 @@
+.addDiv{
+    border: 1px solid;
+    width: 70%;
+    min-height: 20rem;
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   left: 15%;
+   top: 10rem;
+}

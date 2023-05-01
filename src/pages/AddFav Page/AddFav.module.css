@@ -1,0 +1,6 @@
+.searchResults{
+    border: 1px solid;
+    height: 5rem;
+    overflow: scroll;
+    width: 10rem;
+}
