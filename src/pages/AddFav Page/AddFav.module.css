@@ -1,6 +1,56 @@
 .searchResults{
-    border: 1px solid;
-    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 10rem;
     overflow: scroll;
-    width: 10rem;
+   
+    position: relative;
+    left: 42%;
+}
+.searchResults form{
+    
+    padding: 5px;
+}
+.searchResults::-webkit-scrollbar {
+    display: none;
+  }
+.textArea{
+    width: 60rem;
+height: 15rem;
+border-radius: 10px;
+font-size: x-large;
+}
+.lowerSection{
+    
+    position: relative;
+    top: 5rem;
+    height: 21rem;
+
+}
+.lowerSection Button{
+    background-color: black;
+    margin: 15px;
+}
+.lowerSection Button:hover{
+    background-color: rgb(45, 45, 45);
+}
+.searchBar{
+    border: 1px solid;
+    width: 20rem;
+    position: relative;
+    left: 40%;
+    min-height: 2rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
+    
+    
+}
+.searchBar input{
+    border: none;
+    outline: none;
+    font-size: larger;
 }
