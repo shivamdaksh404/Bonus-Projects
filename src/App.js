@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/fav' element={<AddFav/>}/>
+        <Route path='/*' element={<h1>404 Page not Found</h1>}/>
     </Routes>
     </div>
   );
