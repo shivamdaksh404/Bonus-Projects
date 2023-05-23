@@ -66,6 +66,7 @@ const handleSubmit = (e) => {
         setLastName("")
         setEmail("")
         setPhoneNo("")
+        localStorage.setItem("Datum", JSON.stringify(fromData) )
     }
 
 

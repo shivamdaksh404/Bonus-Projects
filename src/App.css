@@ -1,0 +1,12 @@
+.NavBar{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    background-color: #000000;
+    border-bottom: 1px solid #ccc;
+    height: 45px;
+    
+    }

@@ -3,24 +3,16 @@ import { todoData } from "../../atom";
 import { useRecoilState } from "recoil";
 import { BiEdit } from "react-icons/bi";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import style from './Task.module.css'
 
 function Task() {
   const [updateInput, setUpdateInput] = useState("");
   const [input, setInput] = useState("");
   const [toDoList, setToDoList] = useRecoilState(todoData);
-  const [isVisibleInput, setIsVisibleInput] = useState(false)
-  // const [count,setCount] = useState(0)
+  // const [isVisibleInput, setIsVisibleInput] = useState(false)
 
   const handleAddTodo = () => {
-    // setCount(count+1)
     let ID = Math.floor(Math.random() * 1000000);
-    // const todos = [
-    //   {
-    //     id: ID,
-    //     todo: input,
-    //     completed: false,
-    //   },
-    // ];
     if (input === "") {
       alert("Please Enter Task Name");
     } else {
@@ -37,16 +29,17 @@ function Task() {
       setInput("");
       console.log(ID);
       console.log(toDoList);
+      localStorage.setItem("todos",JSON.stringify(toDoList))
     }
   };
 
-  const handelUpdateTodo = () => {};
-
+  
   const handleDeleteTodo = (Id) => {
     const filteredTodo = toDoList.filter((item) => item.id !== Id);
     setToDoList(filteredTodo);
+    localStorage.setItem("todos",JSON.stringify(filteredTodo))
   };
-
+  
   const handleShowInput=(Index) =>{
     const update = [...toDoList]
     const letest = toDoList.map((ele,index)=> {
@@ -57,41 +50,64 @@ function Task() {
       return ele
     } )
     setToDoList(letest)
-  console.log(letest)
+    setUpdateInput("")
+    localStorage.setItem("todos",JSON.stringify(letest))
+    console.log(letest)
+  }
+  
+  const handelUpdateTodo = (ID) => {
+    // const updeted= [...toDoList]
+    if(updateInput.length===0){
+      alert("Please Enter Update Task Name");
+    }else{
+    const letestUpdate = toDoList.map((ele,index)=>{
+      if(ID=== ele.id){
+        let newEle= {...ele}
+        return {...newEle, text:newEle.text = updateInput, isVisible:newEle.isVisible=false}
+      }
+      return ele
+    }
+    )
+    setToDoList(letestUpdate)
+    setUpdateInput("")
+    localStorage.setItem("todos",JSON.stringify(letestUpdate))
   }
 
+  };
+
   return (
-    <div>
+    <div className={style.MainContainer}>
       <h1>Task</h1>
       <div>
-        <h2>ToDo</h2>
-        <div>
+       
+        <div className={style.taskDiv}>
           <input value={input} onChange={(e) => setInput(e.target.value)} />
-          <button onClick={handleAddTodo}>Add Task</button>
-          <hr />
-          <h1>Lists</h1>
+          <button  onClick={handleAddTodo}>Add Task</button>
+          <h3>Lists</h3>
         </div>
         {toDoList.map((item, index) => (
-          <div key={index}>
+          <div className={style.MainList} key={index}>
             <p>{item.text}</p>
             
-              {/* <div style={item.isVisible ? {}: {display:"none"}}> */}
               <div style={item.isVisible ? {}: {display:"none"}}>
                 <input
                   type="text"
                   value={updateInput}
                   onChange={(e) => setUpdateInput(e.target.value)}
                 />
-                <button onClick={handelUpdateTodo}> Updated</button>
+                <button onClick={()=>handelUpdateTodo(item.id)}> Updated</button>
               </div>
+              <div>
+
             <button onClick={()=>handleShowInput(index)}>
            
-              <BiEdit />{" "}
+              <BiEdit color="blue" />{" "}
             </button>
             
             <button onClick={() => handleDeleteTodo(item.id)}>
-              <RiDeleteBin6Fill />
+              <RiDeleteBin6Fill color="red" />
             </button>
+              </div>
           </div>
         ))}
       </div>
