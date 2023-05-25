@@ -22,13 +22,11 @@ function Task() {
           id: ID,
           text: input,
           isVisible: false,
-          completed: false,
-          deleted: false,
+          // completed: false,
+          // deleted: false,
         },
       ]);
       setInput("");
-      console.log(ID);
-      console.log(toDoList);
       localStorage.setItem("todos",JSON.stringify(toDoList))
     }
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {data} from '../../atom'
 import { useRecoilState } from "recoil";
 import style from './Contact.css'
@@ -58,23 +58,18 @@ const handleSubmit = (e) => {
     else if (phoneNoCheck(phoneNo)===null){
       alert('Please enter a valid phone number')
     }else{
-        setFromData([...fromData,datas ])
-        alert(
+      let newArr = [...fromData,datas]
+      setFromData([...fromData,datas])
+      alert(
         "Thank you for contacting us. We will get back to you as soon as possible."
         );
         setFirstName("")
         setLastName("")
         setEmail("")
         setPhoneNo("")
-        localStorage.setItem("Datum", JSON.stringify(fromData) )
+        localStorage.setItem("Datum", JSON.stringify(newArr) )
+        console.log(fromData)
     }
-
-
-
-
-      
-
-console.log(fromData)
 
   };
 

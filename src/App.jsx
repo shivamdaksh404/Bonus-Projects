@@ -16,7 +16,6 @@ function App() {
   <Link to={'/'}><li>Home</li></Link>
   <Link to={'/task'}><li>Task</li></Link>
   <Link to={'/contactUs'}><li>Contact Us</li></Link>
-<button type='button' className='btn btn-sm btn-danger '>Clear Data</button>
 
 </div>
 
